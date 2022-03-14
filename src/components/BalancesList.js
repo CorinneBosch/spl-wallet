@@ -32,7 +32,7 @@ import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/InfoOutlined';
 import Tooltip from '@material-ui/core/Tooltip';
 import EditIcon from '@material-ui/icons/Edit';
-import MergeType from '@material-ui/icons/MergeType';
+// import MergeType from '@material-ui/icons/MergeType';
 import SortIcon from '@material-ui/icons/Sort';
 import DeleteIcon from '@material-ui/icons/Delete';
 import AddTokenDialog from './AddTokenDialog';
@@ -151,10 +151,10 @@ export default function BalancesList() {
       }
     });
   }
-//  const totalUsdValue = publicKeys
-//    .filter((pk) => usdValues[pk.toString()])
-//    .map((pk) => usdValues[pk.toString()])
-//    .reduce((a, b) => a + b, 0.0);
+  //  const totalUsdValue = publicKeys
+  //    .filter((pk) => usdValues[pk.toString()])
+  //    .map((pk) => usdValues[pk.toString()])
+  //    .reduce((a, b) => a + b, 0.0);
 
   // Memoized callback and component for the `BalanceListItems`.
   //
@@ -349,7 +349,7 @@ const useStyles = makeStyles((theme) => ({
 export function BalanceListItem({ publicKey, expandable, setUsdValue }) {
   const wallet = useWallet();
   const balanceInfo = useBalanceInfo(publicKey);
-  const classes = useStyles();
+  // const classes = useStyles();
   const connection = useConnection();
   const [open, setOpen] = useState(false);
   const isExtensionWidth = useIsExtensionWidth();
@@ -455,20 +455,20 @@ export function BalanceListItem({ publicKey, expandable, setUsdValue }) {
     }
   }
 
-//  const subtitle =
-//    isExtensionWidth || !publicKey.equals(balanceInfo.owner) ? undefined : (
-//      <div style={{ display: 'flex', height: '20px', overflow: 'hidden' }}>
-//        <div
-//          style={{
-//            display: 'flex',
-//            justifyContent: 'center',
-//            flexDirection: 'column',
-//          }}
-//        >
-//          {publicKey.toBase58()}
-//        </div>
-//      </div>
-//    );
+  //  const subtitle =
+  //    isExtensionWidth || !publicKey.equals(balanceInfo.owner) ? undefined : (
+  //      <div style={{ display: 'flex', height: '20px', overflow: 'hidden' }}>
+  //        <div
+  //          style={{
+  //            display: 'flex',
+  //            justifyContent: 'center',
+  //            flexDirection: 'column',
+  //          }}
+  //        >
+  //          {publicKey.toBase58()}
+  //        </div>
+  //      </div>
+  //    );
 
   const usdValue =
     price === undefined // Not yet loaded.
@@ -485,16 +485,14 @@ export function BalanceListItem({ publicKey, expandable, setUsdValue }) {
   if (balanceInfo.tokenSymbol !== undefined) {
     const sim = balanceInfo.tokenSymbol.toUpperCase();
     if (sim === 'BTC' || sim === 'ETH' || sim === 'SOL' || sim === 'SKYW') {
-        displayBalance = balanceFormat.format(amount / Math.pow(10, decimals));
+      displayBalance = balanceFormat.format(amount / Math.pow(10, decimals));
+    } else {
+      displayBalance = numberFormat.format(amount / Math.pow(10, decimals));
     }
-    else {
-        displayBalance = numberFormat.format(amount / Math.pow(10, decimals));
-    }
+  } else {
+    balanceInfo.tokenSymbol = 'N/A';
+    displayBalance = balanceFormat.format(amount / Math.pow(10, decimals));
   }
-    else {
-      balanceInfo.tokenSymbol = 'N/A';
-        displayBalance = balanceFormat.format(amount / Math.pow(10, decimals));
-    }
 
   return (
     <>
@@ -511,7 +509,7 @@ export function BalanceListItem({ publicKey, expandable, setUsdValue }) {
           <ListItemText
             primary={
               <>
-                {displayBalance}{' '}{displayName}
+                {displayBalance} {displayName}
               </>
             }
           />
@@ -548,7 +546,7 @@ function BalanceListItemDetails({
     closeTokenAccountDialogOpen,
     setCloseTokenAccountDialogOpen,
   ] = useState(false);
-  const [showDetails, setShowDetails] = useState(false);
+  // const [showDetails, setShowDetails] = useState(false);
   const wallet = useWallet();
   const isProdNetwork = useIsProdNetwork();
   const [swapInfo] = useAsyncData(async () => {
@@ -583,12 +581,13 @@ function BalanceListItemDetails({
   const exportNeedsDisplay =
     mint === null && tokenName === 'Solana' && tokenSymbol === 'SOL';
 
+  // eslint-disable-next-line
   const market = tokenSymbol
     ? serumMarkets[tokenSymbol.toUpperCase()]
       ? serumMarkets[tokenSymbol.toUpperCase()].publicKey
       : undefined
     : undefined;
-  const isSolAddress = publicKey.equals(owner);
+  // const isSolAddress = publicKey.equals(owner);
   const additionalInfo = isExtensionWidth ? undefined : (
     <>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -596,7 +595,8 @@ function BalanceListItemDetails({
           <Typography variant="body2">
             <Link
               href={
-                `https://explorer.solana.com/account/${publicKey.toBase58()}` + urlSuffix
+                `https://explorer.solana.com/account/${publicKey.toBase58()}` +
+                urlSuffix
               }
               target="_blank"
               rel="noopener"
@@ -658,14 +658,14 @@ function BalanceListItemDetails({
             Receive
           </Button>
           {amount > 0 ? (
-          <Button
-            variant="outlined"
-            color="primary"
-            startIcon={<SendIcon />}
-            onClick={() => setSendDialogOpen(true)}
-          >
-            Send
-          </Button>
+            <Button
+              variant="outlined"
+              color="primary"
+              startIcon={<SendIcon />}
+              onClick={() => setSendDialogOpen(true)}
+            >
+              Send
+            </Button>
           ) : null}
           {mint && amount === 0 ? (
             <Button

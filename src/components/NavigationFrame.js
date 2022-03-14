@@ -4,7 +4,12 @@ import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { useConnectionConfig } from '../utils/connection';
-import {clusterForEndpoint, getClusters, addCustomCluster, customClusterExists} from '../utils/clusters';
+import {
+  clusterForEndpoint,
+  getClusters,
+  addCustomCluster,
+  customClusterExists,
+} from '../utils/clusters';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -12,7 +17,7 @@ import { useWalletSelector } from '../utils/wallet';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import CheckIcon from '@material-ui/icons/Check';
 import AddIcon from '@material-ui/icons/Add';
-import ExitToApp from '@material-ui/icons/ExitToApp';
+// import ExitToApp from '@material-ui/icons/ExitToApp';
 import LaunchIcon from '@material-ui/icons/Launch';
 import PhonelinkEraseIcon from '@material-ui/icons/PhonelinkErase';
 import MobileFriendlyIcon from '@material-ui/icons/MobileFriendly';
@@ -22,9 +27,9 @@ import Divider from '@material-ui/core/Divider';
 import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
 import SolanaIcon from './SolanaIcon';
-import CodeIcon from '@material-ui/icons/Code';
+// import CodeIcon from '@material-ui/icons/Code';
 import Tooltip from '@material-ui/core/Tooltip';
-import ImportExportIcon from '@material-ui/icons/ImportExport';
+// import ImportExportIcon from '@material-ui/icons/ImportExport';
 import AddAccountDialog from './AddAccountDialog';
 import DeleteMnemonicDialog from './DeleteMnemonicDialog';
 import AddHardwareWalletDialog from './AddHarwareWalletDialog';
@@ -245,17 +250,13 @@ function NetworkSelector() {
             </ListItemIcon>
             {cluster.name === 'mainnet-beta'
               ? 'Solana Mainnet Beta'
-              : ( cluster.name === 'mainnet-beta-backup'
-                  ? 'Genesys Backup'
-                  : ( cluster.name === 'devnet'
-                      ? 'Solana Devnet'
-                      : ( cluster.name === 'testnet'
-                          ? 'Solana Testnet'
-                          : 'Local Network'
-                        )
-                    )
-                )
-            }
+              : cluster.name === 'mainnet-beta-backup'
+              ? 'Genesys Backup'
+              : cluster.name === 'devnet'
+              ? 'Solana Devnet'
+              : cluster.name === 'testnet'
+              ? 'Solana Testnet'
+              : 'Local Network'}
           </MenuItem>
         ))}
         <MenuItem
@@ -269,31 +270,32 @@ function NetworkSelector() {
             : 'Add Custom Endpoint'}
         </MenuItem>
 
-          <MenuItem
-            onClick={()=> window.open("https://exchange.merkle.space/", "_blank")}
-          >
+        <MenuItem
+          onClick={() =>
+            window.open('https://exchange.merkle.space/', '_blank')
+          }
+        >
           <ListItemIcon className={classes.menuItemIcon}>
             <LaunchIcon fontSize="small" />
           </ListItemIcon>
-            Exchange
-          </MenuItem>
-          <MenuItem
-            onClick={()=> window.open("https://mint.merkle.space/", "_blank")}
-          >
+          Exchange
+        </MenuItem>
+        <MenuItem
+          onClick={() => window.open('https://mint.merkle.space/', '_blank')}
+        >
           <ListItemIcon className={classes.menuItemIcon}>
             <LaunchIcon fontSize="small" />
           </ListItemIcon>
-            Minting System
-          </MenuItem>
-          <MenuItem
-            onClick={()=> window.open("https://merkle.space/old/", "_blank")}
-          >
+          Minting System
+        </MenuItem>
+        <MenuItem
+          onClick={() => window.open('https://merkle.space/old/', '_blank')}
+        >
           <ListItemIcon className={classes.menuItemIcon}>
             <LaunchIcon fontSize="small" />
           </ListItemIcon>
-            Merkle Old Version
-          </MenuItem>
-
+          Merkle Old Version
+        </MenuItem>
       </Menu>
     </>
   );
@@ -469,10 +471,7 @@ const useFooterStyles = makeStyles((theme) => ({
 
 function Footer() {
   const classes = useFooterStyles();
-  return (
-    <footer className={classes.footer}>
-    </footer>
-  );
+  return <footer className={classes.footer}></footer>;
 }
 
 function AccountListItem({ account, classes, setAnchorEl, setWalletSelector }) {
