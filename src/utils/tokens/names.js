@@ -21,269 +21,204 @@ import { TokenListProvider } from '@solana/spl-token-registry';
 const POPULAR_TOKENS = {
   [MAINNET_URL]: [
     {
-      mintAddress: 'SRMuApVNdxXokk5GT7XD5cUUgXMBCoAz2LHeuAoKWRt',
-      tokenName: 'Serum',
-      tokenSymbol: 'SRM',
-      icon:
-        'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x476c5E26a75bd202a9683ffD34359C0CC15be0fF/logo.png',
-    },
-    {
-      mintAddress: 'MSRMcoVyrFxnSgo5uXwone5SKcGhT1KEJMFEkMEWf9L',
-      tokenName: 'MegaSerum',
-      tokenSymbol: 'MSRM',
-      icon:
-        'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x476c5E26a75bd202a9683ffD34359C0CC15be0fF/logo.png',
-    },
-    {
       tokenSymbol: 'BTC',
       mintAddress: '9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E',
-      tokenName: 'Wrapped Bitcoin',
+      tokenName: 'Bitcoin',
       icon:
-        'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/bitcoin/info/logo.png',
+        'https://merkle.space/coins/btc.png',
     },
     {
       tokenSymbol: 'ETH',
       mintAddress: '2FPyTwcZLUg1MDrwsyoP4D6s1tM7hAkHYRjkNb5w6Pxk',
-      tokenName: 'Wrapped Ethereum',
+      tokenName: 'Ethereum',
       icon:
-        'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png',
-    },
-    {
-      tokenSymbol: 'FTT',
-      mintAddress: 'AGFEad2et2ZJif9jaGpdMixQqvW5i81aBdvKe7PHNfz3',
-      tokenName: 'Wrapped FTT',
-      icon:
-        'https://raw.githubusercontent.com/trustwallet/assets/f3ffd0b9ae2165336279ce2f8db1981a55ce30f8/blockchains/ethereum/assets/0x50D1c9771902476076eCFc8B2A83Ad6b9355a4c9/logo.png',
-    },
-    {
-      tokenSymbol: 'YFI',
-      mintAddress: '3JSf5tPeuscJGtaCp5giEiDhv51gQ4v3zWg8DGgyLfAB',
-      tokenName: 'Wrapped YFI',
-      icon:
-        'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e/logo.png',
-    },
-    {
-      tokenSymbol: 'LINK',
-      mintAddress: 'CWE8jPTUYhdCTZYWPTe1o5DFqfdjzWKc9WKz6rSjQUdG',
-      tokenName: 'Wrapped Chainlink',
-      icon:
-        'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x514910771AF9Ca656af840dff83E8264EcF986CA/logo.png',
-    },
-    {
-      tokenSymbol: 'XRP',
-      mintAddress: 'Ga2AXHpfAF6mv2ekZwcsJFqu7wB4NV331qNH7fW9Nst8',
-      tokenName: 'Wrapped XRP',
-      icon:
-        'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ripple/info/logo.png',
+        'https://merkle.space/coins/eth.png',
     },
     {
       tokenSymbol: 'USDT',
       mintAddress: 'Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB',
-      tokenName: 'USDT',
+      tokenName: 'Tether USD',
       icon:
-        'https://cdn.jsdelivr.net/gh/solana-labs/explorer/public/tokens/usdt.svg',
-    },
-    {
-      tokenSymbol: 'WUSDT',
-      mintAddress: 'BQcdHdAQW1hczDbBi9hiegXAR7A98Q9jx3X3iBBBDiq4',
-      tokenName: 'Wrapped USD Tether',
-      icon:
-        'https://raw.githubusercontent.com/trustwallet/assets/f3ffd0b9ae2165336279ce2f8db1981a55ce30f8/blockchains/ethereum/assets/0xdAC17F958D2ee523a2206206994597C13D831ec7/logo.png',
+        'https://merkle.space/coins/usdt.png',
     },
     {
       tokenSymbol: 'USDC',
       mintAddress: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
       tokenName: 'USD Coin',
       icon:
-        'https://raw.githubusercontent.com/trustwallet/assets/f3ffd0b9ae2165336279ce2f8db1981a55ce30f8/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png',
+        'https://merkle.space/coins/usdc.png',
     },
     {
-      tokenSymbol: 'WUSDC',
-      mintAddress: 'BXXkv6z8ykpG1yuvUDPgh732wzVHB69RnB9YgSYh3itW',
-      tokenName: 'Wrapped USDC',
+      tokenSymbol: 'DAI',
+      mintAddress: 'FYpdBuyAHSbdaAyD1sKkxyLWbAP8uUW9h6uvdhK74ij1',
+      tokenName: 'DAI Stablecoin',
       icon:
-        'https://raw.githubusercontent.com/trustwallet/assets/f3ffd0b9ae2165336279ce2f8db1981a55ce30f8/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png',
-      deprecated: true,
+        'https://merkle.space/coins/dai.png',
     },
     {
-      tokenSymbol: 'SUSHI',
-      mintAddress: 'AR1Mtgh7zAtxuxGd2XPovXPVjcSdY3i4rQYisNadjfKy',
-      tokenName: 'Wrapped SUSHI',
+      tokenSymbol: 'SRM',
+      mintAddress: 'SRMuApVNdxXokk5GT7XD5cUUgXMBCoAz2LHeuAoKWRt',
+      tokenName: 'Serum Token',
       icon:
-        'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B3595068778DD592e39A122f4f5a5cF09C90fE2/logo.png',
+        'https://cdn.jsdelivr.net/gh/trustwallet/assets@master/blockchains/ethereum/assets/0x476c5E26a75bd202a9683ffD34359C0CC15be0fF/logo.png',
     },
     {
-      tokenSymbol: 'ALEPH',
-      mintAddress: 'CsZ5LZkDS7h9TDKjrbL7VAwQZ9nsRu8vJLhRYfmGaN8K',
-      tokenName: 'Wrapped ALEPH',
+      tokenSymbol: 'SKYW',
+      mintAddress: '5wfyWAuqPRonenYy7oHnDKEt6onM1oiR4mKyyBf16yiP',
+      tokenName: 'Emirates Skywards Miles',
       icon:
-        'https://raw.githubusercontent.com/trustwallet/assets/6996a371cd02f516506a8f092eeb29888501447c/blockchains/nuls/assets/NULSd6HgyZkiqLnBzTaeSQfx1TNg2cqbzq51h/logo.png',
+        'https://merkle.space/coins/skywards.png',
     },
     {
-      tokenSymbol: 'SXP',
-      mintAddress: 'SF3oTvfWzEP3DTwGSvUXRrGTvr75pdZNnBLAH9bzMuX',
-      tokenName: 'Wrapped SXP',
+      tokenSymbol: 'BLINCbit',
+      mintAddress: 'HGLJgzjT8zqxjSJs9rMzsJiLJQQZbC1pR3oWKQQymqKE',
+      tokenName: 'BLINCbits',
       icon:
-        'https://github.com/trustwallet/assets/raw/b0ab88654fe64848da80d982945e4db06e197d4f/blockchains/ethereum/assets/0x8CE9137d39326AD0cD6491fb5CC0CbA0e089b6A9/logo.png',
+        'https://merkle.space/coins/blincbits.png',
     },
     {
-      tokenSymbol: 'HGET',
-      mintAddress: 'BtZQfWqDGbk9Wf2rXEiWyQBdBY1etnUUn6zEphvVS7yN',
-      tokenName: 'Wrapped HGET',
+      tokenSymbol: 'EUR',
+      mintAddress: '6FeW5eWhiSV9gv6kWi6vvP2mPd6vCbPRJgckomNGyDFL',
+      tokenName: 'Euro',
+      icon: 'https://merkle.space/coins/eur.png'
     },
     {
-      tokenSymbol: 'CREAM',
-      mintAddress: '5Fu5UUgbjpUvdBveb3a1JTNirL8rXtiYeSMWvKjtUNQv',
-      tokenName: 'Wrapped CREAM',
-      icon:
-        'https://raw.githubusercontent.com/trustwallet/assets/4c82c2a409f18a4dd96a504f967a55a8fe47026d/blockchains/smartchain/assets/0xd4CB328A82bDf5f03eB737f37Fa6B370aef3e888/logo.png',
+      tokenSymbol: 'USD',
+      mintAddress: 'DAFJA8fAzAkpG5AL62Ur3A8Rnmm9Pc5PuxrDhc66duhp',
+      tokenName: 'US Dollar',
+      icon: 'https://merkle.space/coins/usd.png'
     },
     {
-      tokenSymbol: 'UBXT',
-      mintAddress: '873KLxCbz7s9Kc4ZzgYRtNmhfkQrhfyWGZJBmyCbC3ei',
-      tokenName: 'Wrapped UBXT',
+      tokenSymbol: 'GBP',
+      mintAddress: '6ieGSAoiELCUshdtviNNqyjHf9yzAYYLrPbkt2DS8Fps',
+      tokenName: 'Pound Sterling',
+      icon: 'https://merkle.space/coins/gbp.png'
     },
     {
-      tokenSymbol: 'HNT',
-      mintAddress: 'HqB7uswoVg4suaQiDP3wjxob1G5WdZ144zhdStwMCq7e',
-      tokenName: 'Wrapped HNT',
+      tokenSymbol: 'CHF',
+      mintAddress: 'Fokk6YND2Bdw8A5jyaAyc9kmSLdU43EJktnGwheKvQos',
+      tokenName: 'Swiss Franc',
+      icon: 'https://merkle.space/coins/chf.png'
     },
     {
-      tokenSymbol: 'FRONT',
-      mintAddress: '9S4t2NEAiJVMvPdRYKVrfJpBafPBLtvbvyS3DecojQHw',
-      tokenName: 'Wrapped FRONT',
-      icon:
-        'https://raw.githubusercontent.com/trustwallet/assets/6e375e4e5fb0ffe09ed001bae1ef8ca1d6c86034/blockchains/ethereum/assets/0xf8C3527CC04340b208C854E985240c02F7B7793f/logo.png',
+      tokenSymbol: 'AED',
+      mintAddress: '2oiACYKFnJ53saZa5KfZBdBuatxvg7adDudzE12MujSk',
+      tokenName: 'UAE Dirham',
+      icon: 'https://merkle.space/coins/aed.png'
     },
     {
-      tokenSymbol: 'AKRO',
-      mintAddress: '6WNVCuxCGJzNjmMZoKyhZJwvJ5tYpsLyAtagzYASqBoF',
-      tokenName: 'Wrapped AKRO',
-      icon:
-        'https://raw.githubusercontent.com/trustwallet/assets/878dcab0fab90e6593bcb9b7d941be4915f287dc/blockchains/ethereum/assets/0xb2734a4Cec32C81FDE26B0024Ad3ceB8C9b34037/logo.png',
+      tokenSymbol: 'MXN',
+      mintAddress: '48ycUaghWVrV36xAXpXRnS7t8WHNeN6uko6fUCrix6xc',
+      tokenName: 'Mexican Peso',
+      icon: 'https://merkle.space/coins/mxn.png'
     },
     {
-      tokenSymbol: 'HXRO',
-      mintAddress: 'DJafV9qemGp7mLMEn5wrfqaFwxsbLgUsGVS16zKRk9kc',
-      tokenName: 'Wrapped HXRO',
+      tokenSymbol: 'BRL',
+      mintAddress: 'HGLesEYj8s1z2fw3tBWWYZuvwEBK2sC9fK9bZtafWfrk',
+      tokenName: 'Brazilian Real',
+      icon: 'https://merkle.space/coins/brl.png'
     },
     {
-      tokenSymbol: 'UNI',
-      mintAddress: 'DEhAasscXF4kEGxFgJ3bq4PpVGp5wyUxMRvn6TzGVHaw',
-      tokenName: 'Wrapped UNI',
-      icon:
-        'https://raw.githubusercontent.com/trustwallet/assets/08d734b5e6ec95227dc50efef3a9cdfea4c398a1/blockchains/ethereum/assets/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984/logo.png',
+      tokenSymbol: 'ARS',
+      mintAddress: 'GXcDbzji5EnwZotKBx3YqXkBan7g9cBfFPxEzeusQSkA',
+      tokenName: 'Argentine Peso',
+      icon: 'https://merkle.space/coins/ars.png'
     },
     {
-      tokenSymbol: 'MATH',
-      mintAddress: 'GeDS162t9yGJuLEHPWXXGrb1zwkzinCgRwnT8vHYjKza',
-      tokenName: 'Wrapped MATH',
+      tokenSymbol: 'COP',
+      mintAddress: 'Af7MvTPSXfK4e7uWB5Sp8s3YfzmLpeE5kLNTyt8fGMVf',
+      tokenName: 'Colombian Peso',
+      icon: 'https://merkle.space/coins/cop.png'
     },
     {
-      tokenSymbol: 'TOMO',
-      mintAddress: 'GXMvfY2jpQctDqZ9RoU3oWPhufKiCcFEfchvYumtX7jd',
-      tokenName: 'Wrapped TOMO',
-      icon:
-        'https://raw.githubusercontent.com/trustwallet/assets/08d734b5e6ec95227dc50efef3a9cdfea4c398a1/blockchains/tomochain/info/logo.png',
+      tokenSymbol: 'CAD',
+      mintAddress: 'BopHKP146zUft8cspNonTz5uku5JEyAU8gHR9jcfvyC3',
+      tokenName: 'Canadian Dollar',
+      icon: 'https://merkle.space/coins/cad.png'
     },
     {
-      tokenSymbol: 'LUA',
-      mintAddress: 'EqWCKXfs3x47uVosDpTRgFniThL9Y8iCztJaapxbEaVX',
-      tokenName: 'Wrapped LUA',
-      icon:
-        'https://raw.githubusercontent.com/trustwallet/assets/2d2491130e6beda208ba4fc6df028a82a0106ab6/blockchains/ethereum/assets/0xB1f66997A5760428D3a87D68b90BfE0aE64121cC/logo.png',
+      tokenSymbol: 'SGD',
+      mintAddress: '83K369p4FEetAkLGyC1gDM3CGMfdjNjZPT7hyRTiUpDi',
+      tokenName: 'Singapore Dollar',
+      icon: 'https://merkle.space/coins/sgd.png'
     },
     {
-      tokenSymbol: 'FIDA',
-      mintAddress: 'EchesyfXePKdLtoiZSL8pBe8Myagyy8ZRqsACNCFGnvp',
-      tokenName: 'Bonfida Token',
-      icon:
-        'https://raw.githubusercontent.com/dr497/awesome-serum-markets/master/icons/fida.svg',
+      tokenSymbol: 'HKD',
+      mintAddress: 'WV8mhvVLGUkdGsTLrhgxfFMfz9oF5V6DYRZZN34xiUS',
+      tokenName: 'Hong Kong Dollar',
+      icon: 'https://merkle.space/coins/hkd.png'
     },
     {
-      tokenSymbol: 'LQID',
-      mintAddress: 'A6aY2ceogBz1VaXBxm1j2eJuNZMRqrWUAnKecrMH85zj',
-      tokenName: 'LQID',
-      icon:
-        'https://raw.githubusercontent.com/dr497/awesome-serum-markets/master/icons/lqid.svg',
+      tokenSymbol: 'JPY',
+      mintAddress: '6gBa5QqnQKaPWYK2H7rkgv5zTbXAUVUKgt8zFyZk1mXB',
+      tokenName: 'Japanese Yen',
+      icon: 'https://merkle.space/coins/jpy.png'
     },
     {
-      tokenSymbol: 'SECO',
-      mintAddress: '7CnFGR9mZWyAtWxPcVuTewpyC3A3MDW4nLsu5NY6PDbd',
-      tokenName: 'Serum Ecosystem Pool Token',
+      tokenSymbol: 'AUD',
+      mintAddress: '35sNCECgpQK9PLUPHQyamoaXDnPiZU7U2Wd3zukPKCRf',
+      tokenName: 'Australian Dollar',
+      icon: 'https://merkle.space/coins/aud.png'
     },
     {
-      tokenSymbol: 'HOLY',
-      mintAddress: '3GECTP7H4Tww3w8jEPJCJtXUtXxiZty31S9szs84CcwQ',
-      tokenName: 'Holy Trinity Pool',
+      tokenSymbol: 'ILS',
+      mintAddress: 'DC9Bh7gwwLBLXavve12Cy7Km3k8dwr7dx3hqCf34ZE5s',
+      tokenName: 'Israeli Shekel',
+      icon: 'https://merkle.space/coins/ils.png'
     },
     {
-      tokenSymbol: 'KIN',
-      mintAddress: 'kinXdEcpDQeHPEuQnqmUgtYykqKGVFq6CeVX5iAHJq6',
-      tokenName: 'KIN',
-      icon:
-        'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/kin/info/logo.png',
+      tokenSymbol: 'SAR',
+      mintAddress: 'GPjZXXK5rjtw3w2gWMainVNSTkhzJP6Ra8igrbKXvBwk',
+      tokenName: 'Saudi Arabian Riyal',
+      icon: 'https://merkle.space/coins/sar.png'
     },
     {
-      tokenSymbol: 'MAPS',
-      mintAddress: 'MAPS41MDahZ9QdKXhVa4dWB9RuyfV4XqhyAZ8XcYepb',
-      tokenName: 'Maps.me Token',
+      tokenSymbol: 'NOK',
+      mintAddress: '4KoK1JjigDAUbu4frgVBiD9izNd6M6vt4ijBotmcVUAw',
+      tokenName: 'Norwegian Krone',
+      icon: 'https://merkle.space/coins/nok.png'
     },
     {
-      tokenSymbol: 'RAY',
-      mintAddress: '4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R',
-      tokenName: 'Raydium',
-      icon:
-        'https://raw.githubusercontent.com/raydium-io/media-assets/master/logo.svg',
+      tokenSymbol: 'SEK',
+      mintAddress: 'AxMhcUDbfXvuXd5DuQniQhuuFe1o3uHCnzSfKef6nMho',
+      tokenName: 'Swedish Krona',
+      icon: 'https://merkle.space/coins/sek.png'
     },
     {
-      tokenSymbol: 'OXY',
-      mintAddress: 'z3dn17yLaGMKffVogeFHQ9zWVcXgqgf3PQnDsNs2g6M',
-      tokenName: 'Oxygen Protocol',
-      icon:
-        'https://raw.githubusercontent.com/nathanielparke/awesome-serum-markets/master/icons/oxy.svg',
+      tokenSymbol: 'DKK',
+      mintAddress: '9oE6oaVZ7DQaqxxaVHPtSt1WNu6nEsJVna6b5Rw1Vb7Z',
+      tokenName: 'Danish Krone',
+      icon: 'https://merkle.space/coins/dkk.png'
     },
     {
-      tokenSymbol: 'COPE',
-      mintAddress: '3K6rftdAaQYMPunrtNRHgnK2UAtjm2JwyT2oCiTDouYE',
-      tokenName: 'COPE',
-      icon:
-        'https://cdn.jsdelivr.net/gh/solana-labs/token-list/assets/mainnet/3K6rftdAaQYMPunrtNRHgnK2UAtjm2JwyT2oCiTDouYE/logo.jpg',
+      tokenSymbol: 'CLP',
+      mintAddress: '6a6ELSVhNUBVrhV5Xf9pkeQH9e8uHSxNjUuuz1AsGXe',
+      tokenName: 'Chilean Peso',
+      icon: 'https://merkle.space/coins/clp.png'
     },
     {
-      tokenSymbol: 'BRZ',
-      mintAddress: 'FtgGSFADXBtroxq8VCausXRr2of47QBf5AS1NtZCu4GD',
-      tokenName: 'Brazilian Digital Token',
-      icon:
-        'https://cdn.jsdelivr.net/gh/solana-labs/explorer/public/tokens/brz.png',
+      tokenSymbol: 'PHP',
+      mintAddress: 'FeT1wF3jDDdKH4Y3Gu6BrDcyeGFqtg2AEydS7YkHUpqa',
+      tokenName: 'Philippine Peso',
+      icon: 'https://merkle.space/coins/php.png'
     },
     {
-      tokenSymbol: 'STEP',
-      mintAddress: 'StepAscQoEioFxxWGnh2sLBDFp9d8rvKz2Yp39iDpyT',
-      tokenName: 'Step',
-      icon:
-        'https://cdn.jsdelivr.net/gh/solana-labs/token-list/assets/mainnet/StepAscQoEioFxxWGnh2sLBDFp9d8rvKz2Yp39iDpyT/logo.png',
+      tokenSymbol: 'INR',
+      mintAddress: '4zKqWK65fu3wmkweYrgv3DXubJbcEFujfHSNUZzN7XcS',
+      tokenName: 'Indian Rupee',
+      icon: 'https://merkle.space/coins/inr.png'
     },
     {
-      tokenSymbol: 'SLRS',
-      mintAddress: 'SLRSSpSLUTP7okbCUBYStWCo1vUgyt775faPqz8HUMr',
-      tokenName: 'Solrise Finance',
-      icon:
-        'https://i.ibb.co/tqbTKTT/slrs-256.png',
+      tokenSymbol: 'BDT',
+      mintAddress: '7goHaTunWdZWE3vRGgmufYg9zSgKp2BFFrwB6kp43BpH',
+      tokenName: 'Bangladeshi Taka',
+      icon: 'https://merkle.space/coins/bdt.png'
     },
     {
-      tokenSymbol: 'SAMO',
-      mintAddress: '7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU',
-      tokenName: 'Samoyed Coin',
-      icon:
-        'https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU/logo.png',
-    },
-    {
-      tokenSymbol: 'stSOL',
-      mintAddress: '7dHbWXmci3dT8UFYWYZweBLXgycu7Y3iL6trKn1Y7ARj',
-      tokenName: 'Lido Staked SOL',
-      icon:
-        'https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/7dHbWXmci3dT8UFYWYZweBLXgycu7Y3iL6trKn1Y7ARj/logo.png',
+      tokenSymbol: 'THB',
+      mintAddress: '14XnWw1vAko4wGhkvE4FU7DMkCg1qwNoKXuhiCoE7p6q',
+      tokenName: 'Thai Baht',
+      icon: 'https://merkle.space/coins/thb.png'
     },
   ],
 };

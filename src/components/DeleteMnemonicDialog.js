@@ -37,7 +37,7 @@ export default function DeleteMnemonicDialog({ open, onClose }) {
             <strong>
               To prevent loss of funds, please ensure you have the seed phrase
               and the private key for all current accounts. You can view it by selecting
-              "Export Mnemonic" in the user menu.
+              "Export Seed Phrase" in the account menu.
             </strong>
           </div>
           <TextField

@@ -30,9 +30,7 @@ import Tab from '@material-ui/core/Tab';
 import { DialogContentText, Tooltip } from '@material-ui/core';
 import { EthFeeEstimate } from './EthFeeEstimate';
 
-const DISABLED_MINTS = new Set([
-  'ABE7D8RU1eHfCJWzHYZZeymeE8k9nPPXfqge2NQYyKoL',
-]);
+const DISABLED_MINTS = new Set(['ABE7D8RU1eHfCJWzHYZZeymeE8k9nPPXfqge2NQYyKoL']);
 
 export default function DepositDialog({
   open,
@@ -48,11 +46,7 @@ export default function DepositDialog({
   const [tab, setTab] = useState(0);
 
   // SwapInfos to ignore.
-  if (
-    swapInfo &&
-    swapInfo.coin &&
-    swapInfo.coin.erc20Contract === '0x2b2e04bf86978b45bb2edf54aca876973bdd43c0'
-  ) {
+  if (swapInfo && swapInfo.coin && swapInfo.coin.erc20Contract === '0x2b2e04bf86978b45bb2edf54aca876973bdd43c0') {
     swapInfo = null;
   }
 
@@ -63,13 +57,9 @@ export default function DepositDialog({
     if (!mint) {
       firstTab = 'SOL';
     } else {
-      if (swapInfo.blockchain !== 'eth') {
-        secondTab = `${
-          swapInfo.coin.erc20Contract ? 'ERC20' : 'Native'
-        } ${secondTab}`;
-      } else {
-        secondTab = null;
-      }
+      secondTab = `${
+        swapInfo.coin.erc20Contract ? 'ERC20' : 'Native'
+      } ${secondTab}`;
     }
     tabs = (
       <Tabs
@@ -81,15 +71,14 @@ export default function DepositDialog({
       >
         <Tab label={firstTab} />
         {(!DISABLED_MINTS.has(mint && mint.toString()) ||
-          localStorage.getItem('sollet-private')) &&
-          secondTab && <Tab label={secondTab} />}
+          localStorage.getItem('sollet-private')) && <Tab label={secondTab} />}
       </Tabs>
     );
   }
   const displaySolAddress = publicKey.equals(owner) || isAssociatedToken;
-  const depositAddressStr = displaySolAddress
-    ? owner.toBase58()
-    : publicKey.toBase58();
+//  const depositAddressStr = displaySolAddress
+//    ? owner.toBase58()
+//    : publicKey.toBase58();
   return (
     <DialogForm open={open} onClose={onClose} maxWidth="sm" fullWidth>
       <DialogTitle>
@@ -112,11 +101,6 @@ export default function DepositDialog({
                 This address can only be used to receive{' '}
                 {tokenSymbol ?? abbreviateAddress(mint)}. Do not send SOL to
                 this address.
-                <br />
-                <b style={{ color: 'red' }}>WARNING</b>: You are using a
-                deprecated account type. Please migrate your tokens. Ideally,
-                create a new wallet. If you send to this address from a poorly
-                implemented wallet, you may burn tokens.
               </DialogContentText>
             ) : (
               <DialogContentText>
@@ -125,7 +109,7 @@ export default function DepositDialog({
               </DialogContentText>
             )}
             <CopyableDisplay
-              value={depositAddressStr}
+              value={publicKey.toBase58()}
               label={'Deposit Address'}
               autoFocus
               qrCode
@@ -133,12 +117,21 @@ export default function DepositDialog({
             <DialogContentText variant="body2">
               <Link
                 href={
-                  `https://solscan.io/account/${depositAddressStr}` + urlSuffix
+                  `https://explorer.solana.com/account/${publicKey.toBase58()}` + urlSuffix
                 }
                 target="_blank"
                 rel="noopener"
               >
-                View on Solscan
+                View on Solana Explorer{' '}
+              </Link>
+              <Link
+                href={
+                  `https://solscan.io/account/${publicKey.toBase58()}` + urlSuffix
+                }
+                target="_blank"
+                rel="noopener"
+              >
+                or Solscan
               </Link>
             </DialogContentText>
           </>
@@ -212,7 +205,7 @@ function SolletSwapDepositAddress({ balanceInfo, swapInfo, ethAccount }) {
     );
   }
 
-  if (false && blockchain === 'eth') {
+  if (blockchain === 'eth') {
     return (
       <>
         <DialogContentText>
