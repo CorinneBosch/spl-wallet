@@ -4,12 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { useConnectionConfig } from '../utils/connection';
-import {
-  clusterForEndpoint,
-  getClusters,
-  addCustomCluster,
-  customClusterExists,
-} from '../utils/clusters';
+import {clusterForEndpoint, getClusters, addCustomCluster, customClusterExists} from '../utils/clusters';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -18,6 +13,9 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import CheckIcon from '@material-ui/icons/Check';
 import AddIcon from '@material-ui/icons/Add';
 import ExitToApp from '@material-ui/icons/ExitToApp';
+import LaunchIcon from '@material-ui/icons/Launch';
+import PhonelinkEraseIcon from '@material-ui/icons/PhonelinkErase';
+import MobileFriendlyIcon from '@material-ui/icons/MobileFriendly';
 import AccountIcon from '@material-ui/icons/AccountCircle';
 import UsbIcon from '@material-ui/icons/Usb';
 import Divider from '@material-ui/core/Divider';
@@ -76,26 +74,9 @@ export default function NavigationFrame({ children }) {
   return (
     <>
       <AppBar position="static">
-        {!isExtension && (
-          <div
-            style={{
-              textAlign: 'center',
-              background: '#fafafa',
-              color: 'black',
-              paddingLeft: '24px',
-              paddingRight: '24px',
-              fontSize: '14px',
-            }}
-          >
-            <Typography>
-              Beware of sites attempting to impersonate sollet.io or other DeFi
-              services.
-            </Typography>
-          </div>
-        )}
         <Toolbar>
           <Typography variant="h6" className={classes.title} component="h1">
-            {isExtensionWidth ? 'Sollet' : 'Solana SPL Token Wallet'}
+            {isExtensionWidth ? 'Your coins' : 'Your keys, your coins'}
           </Typography>
           <NavigationButtons />
         </Toolbar>
@@ -262,9 +243,19 @@ function NetworkSelector() {
                 <CheckIcon fontSize="small" />
               ) : null}
             </ListItemIcon>
-            {cluster.name === 'mainnet-beta-backup'
-              ? 'Mainnet Beta Backup'
-              : cluster.apiUrl}
+            {cluster.name === 'mainnet-beta'
+              ? 'Solana Mainnet Beta'
+              : ( cluster.name === 'mainnet-beta-backup'
+                  ? 'Genesys Backup'
+                  : ( cluster.name === 'devnet'
+                      ? 'Solana Devnet'
+                      : ( cluster.name === 'testnet'
+                          ? 'Solana Testnet'
+                          : 'Local Network'
+                        )
+                    )
+                )
+            }
           </MenuItem>
         ))}
         <MenuItem
@@ -277,6 +268,32 @@ function NetworkSelector() {
             ? 'Edit Custom Endpoint'
             : 'Add Custom Endpoint'}
         </MenuItem>
+
+          <MenuItem
+            onClick={()=> window.open("https://exchange.merkle.space/", "_blank")}
+          >
+          <ListItemIcon className={classes.menuItemIcon}>
+            <LaunchIcon fontSize="small" />
+          </ListItemIcon>
+            Exchange
+          </MenuItem>
+          <MenuItem
+            onClick={()=> window.open("https://mint.merkle.space/", "_blank")}
+          >
+          <ListItemIcon className={classes.menuItemIcon}>
+            <LaunchIcon fontSize="small" />
+          </ListItemIcon>
+            Minting System
+          </MenuItem>
+          <MenuItem
+            onClick={()=> window.open("https://merkle.space/old/", "_blank")}
+          >
+          <ListItemIcon className={classes.menuItemIcon}>
+            <LaunchIcon fontSize="small" />
+          </ListItemIcon>
+            Merkle Old Version
+          </MenuItem>
+
       </Menu>
     </>
   );
@@ -422,9 +439,9 @@ function WalletSelector() {
           }}
         >
           <ListItemIcon className={classes.menuItemIcon}>
-            <ImportExportIcon fontSize="small" />
+            <MobileFriendlyIcon fontSize="small" />
           </ListItemIcon>
-          Export Mnemonic
+          Export Seed Phrase
         </MenuItem>
         <MenuItem
           onClick={() => {
@@ -433,9 +450,9 @@ function WalletSelector() {
           }}
         >
           <ListItemIcon className={classes.menuItemIcon}>
-            <ExitToApp fontSize="small" />
+            <PhonelinkEraseIcon fontSize="small" />
           </ListItemIcon>
-          {'Delete Mnemonic & Log Out'}
+          {'Delete Seed & Log Out'}
         </MenuItem>
       </Menu>
     </>
@@ -454,17 +471,6 @@ function Footer() {
   const classes = useFooterStyles();
   return (
     <footer className={classes.footer}>
-      <Button
-        variant="outlined"
-        color="primary"
-        component="a"
-        target="_blank"
-        rel="noopener"
-        href="https://github.com/serum-foundation/spl-token-wallet"
-        startIcon={<CodeIcon />}
-      >
-        View Source
-      </Button>
     </footer>
   );
 }

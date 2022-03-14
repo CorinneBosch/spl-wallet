@@ -106,7 +106,7 @@ function SwapButtonPopover({ size }) {
               <Swap
                 provider={provider}
                 tokenList={tokenList}
-                containerStyle={{ width: '432px' }}
+                containerStyle={{ width: '300px' }}
               />
             </Popover>
           </div>

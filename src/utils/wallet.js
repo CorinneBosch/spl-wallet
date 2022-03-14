@@ -311,7 +311,7 @@ export function WalletProvider({ children }) {
           ledger: false,
         },
         address: new PublicKey(bs58.decode(pubkey)),
-        name: `${name} (imported)`, // TODO: do this in the Component with styling.
+        name: `${name} *`, // Imported account indicator TODO: do this in the Component with styling.
         isSelected: walletSelector.importedPubkey === pubkey,
       };
     });
@@ -456,7 +456,7 @@ export function useBalanceInfo(publicKey) {
       decimals: 9,
       mint: null,
       owner: publicKey,
-      tokenName: 'SOL',
+      tokenName: 'Solana',
       tokenSymbol: 'SOL',
       valid: true,
     };
