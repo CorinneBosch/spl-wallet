@@ -61,7 +61,6 @@ export default function App() {
     <Suspense fallback={<LoadingIndicator />}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-
         <ConnectionProvider>
           <TokenRegistryProvider>
             <SnackbarProvider maxSnack={5} autoHideDuration={8000}>

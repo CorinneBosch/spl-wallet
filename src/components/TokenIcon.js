@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 
-export default function TokenIcon({ mint, url, tokenName, size = 20, ...props }) {
+export default function TokenIcon({
+  mint,
+  url,
+  tokenName,
+  size = 20,
+  ...props
+}) {
   const [hasError, setHasError] = useState(false);
 
   if (!url && mint === null) {
-    url = 'https://merkle.space/coins/sol.png';
+    url = 'https://merkle.space/coins/gas.png';
   }
 
   if (hasError || !url) {
