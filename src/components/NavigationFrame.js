@@ -45,6 +45,8 @@ import { useConnectedWallets } from '../utils/connected-wallets';
 import { usePage } from '../utils/page';
 import { MonetizationOn, OpenInNew } from '@material-ui/icons';
 import AddCustomClusterDialog from './AddCustomClusterDialog';
+// import CardMedia from '@material-ui/core/CardMedia';
+// import BcbLogo from '/images/BCB-white.png';
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -71,6 +73,10 @@ const useStyles = makeStyles((theme) => ({
     height: 16,
     width: 16,
   },
+  media: {
+    height: 30,
+    paddingRight: 10,
+  },
 }));
 
 export default function NavigationFrame({ children }) {
@@ -80,8 +86,13 @@ export default function NavigationFrame({ children }) {
     <>
       <AppBar position="static">
         <Toolbar>
+          <img
+            src="/images/BCB-white.png"
+            className={classes.media}
+            alt="logo"
+          />
           <Typography variant="h6" className={classes.title} component="h1">
-            {isExtensionWidth ? 'Your coins' : 'Your keys, your coins'}
+            BLINC wallet
           </Typography>
           <NavigationButtons />
         </Toolbar>
@@ -312,10 +323,8 @@ function WalletSelector() {
   } = useWalletSelector();
   const [anchorEl, setAnchorEl] = useState(null);
   const [addAccountOpen, setAddAccountOpen] = useState(false);
-  const [
-    addHardwareWalletDialogOpen,
-    setAddHardwareWalletDialogOpen,
-  ] = useState(false);
+  const [addHardwareWalletDialogOpen, setAddHardwareWalletDialogOpen] =
+    useState(false);
   const [deleteMnemonicOpen, setDeleteMnemonicOpen] = useState(false);
   const [exportMnemonicOpen, setExportMnemonicOpen] = useState(false);
   const classes = useStyles();
