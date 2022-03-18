@@ -402,11 +402,13 @@ export function BalanceListItem({ publicKey, expandable, setUsdValue }) {
   tokenName = tokenName ?? abbreviateAddress(mint);
   let displayName;
   if (isExtensionWidth) {
-    displayName = tokenSymbol ?? tokenName;
-  } else if (tokenSymbol === 'SOL') {
-    displayName = 'GAS';
+    tokenSymbol === 'SOL'
+      ? (displayName = 'GAS')
+      : (displayName = tokenSymbol ?? tokenName);
   } else {
-    displayName = tokenSymbol;
+    tokenSymbol === 'SOL'
+      ? (displayName = 'GAS (GAS Token)')
+      : (displayName = tokenSymbol + (tokenSymbol ? ` (${tokenName})` : ''));
   }
 
   // Fetch and cache the associated token address.

@@ -46,7 +46,6 @@ import { usePage } from '../utils/page';
 import { MonetizationOn, OpenInNew } from '@material-ui/icons';
 import AddCustomClusterDialog from './AddCustomClusterDialog';
 // import CardMedia from '@material-ui/core/CardMedia';
-// import BcbLogo from '/images/BCB-white.png';
 
 const useStyles = makeStyles((theme) => ({
   content: {
