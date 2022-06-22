@@ -259,9 +259,9 @@ function NetworkSelector() {
               ) : null}
             </ListItemIcon>
             {cluster.name === 'mainnet-beta'
-              ? 'Solana Mainnet Beta'
+              ? 'Genesys RPC'
               : cluster.name === 'mainnet-beta-backup'
-              ? 'Genesys Backup'
+              ? 'Solana Backup'
               : cluster.name === 'devnet'
               ? 'Solana Devnet'
               : cluster.name === 'testnet'

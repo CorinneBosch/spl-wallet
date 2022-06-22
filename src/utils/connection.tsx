@@ -16,18 +16,20 @@ const ConnectionContext = React.createContext<{
   connection: Connection;
 } | null>(null);
 
-export const MAINNET_URL = 'https://solana-api.projectserum.com/';
+export const MAINNET_URL = 'https://ssc-dao.genesysgo.net/';
+// export const MAINNET_URL = 'https://solana-api.projectserum.com/';
 // Backup node for the moment is https://ssc-dao.genesysgo.net/.
-export const MAINNET_BACKUP_URL = 'https://ssc-dao.genesysgo.net/';
+export const MAINNET_BACKUP_URL = 'https://api.mainnet-beta.solana.com';
 export function ConnectionProvider({ children }) {
   const [endpoint, setEndpoint] = useLocalStorageState(
     'connectionEndpoint',
     MAINNET_URL,
   );
 
-  const connection = useMemo(() => new Connection(endpoint, 'recent'), [
-    endpoint,
-  ]);
+  const connection = useMemo(
+    () => new Connection(endpoint, 'recent'),
+    [endpoint],
+  );
 
   return (
     <ConnectionContext.Provider value={{ endpoint, setEndpoint, connection }}>
@@ -57,7 +59,9 @@ export function useIsProdNetwork() {
   if (!context) {
     throw new Error('Missing connection context');
   }
-  return context.endpoint === MAINNET_URL || context.endpoint === MAINNET_BACKUP_URL;
+  return (
+    context.endpoint === MAINNET_URL || context.endpoint === MAINNET_BACKUP_URL
+  );
 }
 
 export function useSolanaExplorerUrlSuffix() {
@@ -130,5 +134,5 @@ export async function getMultipleSolanaAccounts(
 ): Promise<
   Array<null | { publicKey: PublicKey; account: AccountInfo<Buffer> }>
 > {
-	return anchor.utils.rpc.getMultipleAccounts(connection, publicKeys);
+  return anchor.utils.rpc.getMultipleAccounts(connection, publicKeys);
 }

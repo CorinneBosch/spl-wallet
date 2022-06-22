@@ -47,7 +47,7 @@ import {
 } from '../utils/connection';
 //import { useRegion } from '../utils/region';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { serumMarkets, priceStore } from '../utils/markets';
+// import { serumMarkets, priceStore } from '../utils/markets';
 import { swapApiRequest } from '../utils/swap/api';
 import { showSwapAddress } from '../utils/config';
 import { useAsyncData } from '../utils/fetch-loop';
@@ -367,18 +367,18 @@ export function BalanceListItem({ publicKey, expandable, setUsdValue }) {
           setPrice(1);
         }
         // A Serum market exists. Fetch the price.
-        else if (serumMarkets[coin]) {
-          let m = serumMarkets[coin];
-          priceStore
-            .getPrice(connection, m.name)
-            .then((price) => {
-              setPrice(price);
-            })
-            .catch((err) => {
-              console.error(err);
-              setPrice(null);
-            });
-        }
+        // else if (serumMarkets[coin]) {
+        //   let m = serumMarkets[coin];
+        //   priceStore
+        //     .getPrice(connection, m.name)
+        //     .then((price) => {
+        //       setPrice(price);
+        //     })
+        //     .catch((err) => {
+        //       console.error(err);
+        //       setPrice(null);
+        //     });
+        // }
         // No Serum market exists.
         else {
           setPrice(null);
@@ -518,7 +518,7 @@ export function BalanceListItem({ publicKey, expandable, setUsdValue }) {
           <BalanceListItemDetails
             isAssociatedToken={isAssociatedToken}
             publicKey={publicKey}
-            serumMarkets={serumMarkets}
+            // serumMarkets={serumMarkets}
             balanceInfo={balanceInfo}
           />
         </Collapse>
@@ -529,7 +529,7 @@ export function BalanceListItem({ publicKey, expandable, setUsdValue }) {
 
 function BalanceListItemDetails({
   publicKey,
-  serumMarkets,
+  // serumMarkets,
   balanceInfo,
   isAssociatedToken,
 }) {
@@ -577,11 +577,11 @@ function BalanceListItemDetails({
     mint === null && tokenName === 'Solana' && tokenSymbol === 'SOL';
 
   // eslint-disable-next-line
-  const market = tokenSymbol
-    ? serumMarkets[tokenSymbol.toUpperCase()]
-      ? serumMarkets[tokenSymbol.toUpperCase()].publicKey
-      : undefined
-    : undefined;
+  const market = tokenSymbol;
+  // ? serumMarkets[tokenSymbol.toUpperCase()]
+  //   ? serumMarkets[tokenSymbol.toUpperCase()].publicKey
+  //   : undefined
+  // : undefined;
   // const isSolAddress = publicKey.equals(owner);
   const additionalInfo = isExtensionWidth ? undefined : (
     <>
